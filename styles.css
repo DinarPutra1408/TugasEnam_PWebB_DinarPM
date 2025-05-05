@@ -175,9 +175,6 @@ p {
     align-items: center;
 }
 
-.main-text {
-    text-align: left; /* Pastikan teks rata kiri */
-}
 
 .main-text h1 span {
     color: var(--primary);
@@ -188,8 +185,14 @@ p {
     color: var(--text);
     margin: 10px 0 20px;
     position: relative;
-    padding-bottom: 0; /* Hilangkan padding untuk garis oranye */
-    text-align: left;
+    padding-bottom: 0;
+    text-align: center; /* Default untuk mobile */
+}
+
+@media (min-width: 768px) {
+    .main-text h2 {
+        text-align: left; /* Rata kiri hanya di desktop */
+    }
 }
 
 /* Hapus garis oranye hanya di main section */
