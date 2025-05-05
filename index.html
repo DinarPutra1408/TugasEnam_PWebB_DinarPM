@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<!-- Deklarasi tipe dokumen HTML5 -->
+<html lang="id">
+<!-- Elemen root dengan atribut bahasa Indonesia -->
+<head>
+    <!-- Bagian head berisi metadata dan link resource -->
+    <meta charset="UTF-8">
+    <!-- Pengaturan karakter encoding UTF-8 untuk support multilingual -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Viewport untuk responsive design di berbagai device -->
+    <title>Portfolio Dinar Putra Mubarok</title>
+    <!-- Judul halaman yang muncul di tab browser -->
+    
+    <!-- Load font Poppins dari Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <!-- Link ke file CSS eksternal -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header id="header">
+        <!-- Container untuk layout header -->
+        <div class="container header-container">
+            <!-- Logo dan nama -->
+            <div class="logo">
+                <img src="AvatarDinar.png" alt="Foto Profil">
+                <h3>Dinar Putra Mubarok</h3>
+            </div>
+            
+            <!-- Toggle untuk mobile navigation -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <!-- Navigasi utama -->
+            <nav id="navigation">
+                <ul class="nav-list">
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#projects">Proyek</a></li>
+                    <li><a href="#achievements">Prestasi</a></li>
+                    <li><a href="#guestbook">Buku Tamu</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+            <!-- Label untuk toggle navigasi mobile -->
+            <label for="nav-toggle" class="nav-toggle-label">
+                <span class="hamburger"></span>
+            </label>
+        </div>
+    </header>
+
+    <section id="home" class="main">
+    <div class="container">
+        <aside align="center">
+            <p>Musik biar asik</p>
+            <audio controls loop>
+                <source src="audioporto.mpeg" type="audio/mpeg">
+            </audio>
+        </aside>
+        
+        <div class="main-grid">
+            <div class="main-text">
+                <h1>Halo, Saya <span>Dinar</span></h1>
+                <h2>Web Developer Profesional</h2> <!-- Perhatikan di sini -->
+                <p>Pengembang web dari Surabaya dengan pengalaman lebih dari 1 tahun dalam pengembangan web, desain UI/UX, dan pemasaran digital. Mahir dalam Java, HTML, CSS, JavaScript, dan Figma.</p>
+                <div class="button-group">
+                    <a href="https://drive.google.com/file/d/1Xxvm76QwBLFILoTjrzXAhdBXsK0Zl63P/view?usp=drive_link" class="btn primary">Unduh CV</a>
+                    <a href="#projects" class="btn secondary">Lihat Proyek</a>
+                </div>
+            </div>
+            <div class="main-image">
+                <img src="DinarProfile.png" alt="Foto Profil Dinar">
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <!-- Header section dengan judul dan subjudul -->
+            <div class="section-header">
+                <h2 class="section-title">Proyek Saya</h2>
+                <p class="section-subtitle">Beberapa karya terbaik yang telah saya selesaikan</p>
+            </div>
+        </div>
+
+        <!-- Project 1 - Full Width Layout -->
+        <div class="project-full">
+            <div class="container">
+                <article class="project-card">
+                    <div class="project-content">
+                        <!-- Informasi proyek -->
+                        <div class="project-info">
+                            <h3>Tracknesia Apps</h3>
+                            <p class="project-category">Aplikasi Mobile • UI/UX Design</p>
+                            <p class="project-desc">Aplikasi pelacakan perjalanan dengan fitur GPS real-time yang dikembangkan menggunakan Figma. Memiliki fitur pencatatan rute, estimasi waktu, dan integrasi dengan media sosial.</p>
+                            <!-- Tag teknologi -->
+                            <div class="project-tech">
+                                <span>Sitemap</span>
+                                <span>User Flow</span>
+                                <span>Figma</span>
+                            </div>
+                        </div>
+                        <!-- Gambar proyek -->
+                        <div class="project-image">
+                            <img src="TracknesiaApps.png" alt="Tracknesia Apps">
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <!-- Project 2 dengan layout terbalik -->
+        <div class="project-full">
+            <div class="container">
+                <article class="project-card">
+                    <!-- Class 'reverse' untuk membalik posisi gambar dan teks -->
+                    <div class="project-content reverse">
+                        <div class="project-info">
+                            <h3>Pazarin Marketplace</h3>
+                            <p class="project-category">E-commerce • Web Development</p>
+                            <p class="project-desc">Platform e-commerce untuk UMKM lokal dengan sistem pembayaran terintegrasi dan manajemen inventaris. Dibangun dengan pembuatan Figma user flow dan sitemap.</p>
+                            <div class="project-tech">
+                                <span>Figma</span>
+                                <span>Sitemap</span>
+                                <span>Userflow</span>
+                            </div>
+                        </div>
+                        <!-- Video proyek dengan poster -->
+                        <div class="project-image">
+                            <div class="video-container">
+                                <video controls poster="Pazarin-poster.jpg">
+                                    <source src="VidioPazarin.mp4" type="video/mp4">  
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Prestasi</h2>
+                <p class="section-subtitle">Pencapaian dan pengakuan yang saya dapatkan</p>
+            </div>
+
+            <!-- Grid layout untuk prestasi -->
+            <div class="achievement-grid">
+                <!-- Achievement Card 1 -->
+                <article class="achievement-card">
+                    <div class="achievement-image">
+                        <img src="JuaraFesmaro.jpeg" alt="Hackathon Nasional">
+                    </div>
+                    <div class="achievement-content">
+                        <!-- Meta informasi (tanggal dan badge) -->
+                        <div class="achievement-meta">
+                            <span class="date">April 2025</span>
+                            <span class="badge gold">Juara 1</span>
+                        </div>
+                        <h3>FESMARO 2025</h3>
+                        <p>Mengembangkan aplikasi pazarin hingga uji testing aplikasi menggunakan maze.</p>
+                    </div>
+                </article>
+
+                <!-- Achievement Card 2 -->
+                <article class="achievement-card">
+                    <div class="achievement-image">
+                        <img src="JuaraTigaSilat.jpeg" alt="Kompetisi Coding">
+                    </div>
+                    <div class="achievement-content">
+                        <div class="achievement-meta">
+                            <span class="date">Mei 2022</span>
+                            <span class="badge bronze">Juara 3</span>
+                        </div>
+                        <h3>Kompetisi Pencak Silat Surabaya SLC Cup 2022</h3>
+                        <p>Kategori Kelas F fighter putra remaja.</p>
+                    </div>
+                </article>
+
+                <!-- Achievement Card 3 -->
+                <article class="achievement-card">
+                    <div class="achievement-image">
+                        <img src="AsdosMatdis.jpg" alt="Beasiswa Prestasi">
+                    </div>
+                    <div class="achievement-content">
+                        <div class="achievement-meta">
+                            <span class="date">2024-2025</span>
+                            <span class="badge">Asisten Dosen</span>
+                        </div>
+                        <h3>Asisten Dosen</h3>
+                        <p>Menjadi Asisten dosen mata kuliah Matematika diskrit dengan 3 poin sks.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guestbook Section -->
+    <section id="guestbook" class="guestbook">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Buku Tamu</h2>
+                <p class="section-subtitle">Isi form berikut dan lihat daftar pengunjung</p>
+            </div>
+            
+            <!-- Konten buku tamu dalam grid -->
+            <div class="guestbook-content">
+                <!-- Form buku tamu -->
+                <form id="guestbook-form" class="guestbook-form card">
+                    <h3 class="form-title">Form Kunjungan</h3>
+                    <div class="form-group">
+                        <label for="guest-name">Nama Lengkap</label>
+                        <input type="text" id="guest-name" placeholder="Masukkan nama Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="guest-message">Pesan/Komentar</label>
+                        <textarea id="guest-message" rows="3" placeholder="Tulis pesan Anda..." required></textarea>
+                    </div>
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="guest-attended">
+                        <label for="guest-attended">Saya sudah mengunjungi website ini</label>
+                    </div>
+                    <button type="submit" class="btn primary">Kirim</button>
+                </form>
+                
+                <!-- Daftar tamu -->
+                <div class="guestbook-list-container card">
+                    <div class="list-header">
+                        <h3>Daftar Pengunjung</h3>
+                        <div class="list-controls">
+                            <!-- Search box dengan SVG icon -->
+                            <div class="search-box">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                                <input type="text" id="search-guest" placeholder="Cari pengunjung...">
+                            </div>
+                            <button id="clear-all" class="btn secondary small">Hapus Semua</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Tempat daftar tamu akan dimuat -->
+                    <div id="guestbook-list" class="guestbook-list">
+                        <!-- Empty state ketika belum ada tamu -->
+                        <div class="empty-state">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <p>Tidak ada pengunjung yang ditemukan</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Hubungi Saya</h2>
+                <p class="section-subtitle">Saya terbuka untuk peluang kerja sama dan proyek baru</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Form kontak -->
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nama Lengkap</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Pesan</label>
+                        <textarea id="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn primary">Kirim Pesan</button>
+                </form>
+
+                <!-- Informasi kontak -->
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <span>✉️</span>
+                        </div>
+                        <div class="info-text">
+                            <h4>Email</h4>
+                            <p>dinarmubarok719@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <span>📱</span>
+                        </div>
+                        <div class="info-text">
+                            <h4>Telepon</h4>
+                            <p>+62 821 4039 9150</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <span>📍</span>
+                        </div>
+                        <div class="info-text">
+                            <h4>Lokasi</h4>
+                            <p>Surabaya, Jawa Timur, Indonesia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Photo Section -->
+    <h2>Gambar dari Pexels API</h2>
+    <div class = "a" id="image-containerr"></div>
+    
+
+    <h2>Kutipan dari Ninja API</h2>
+    <div id="quote-box">
+        <p id="quote-text">Memuat kutipan inspiratif...</p>
+        <small id="quote-author"></small>
+        <br><br>
+        <button id="refresh-quote">Muat Kutipan Baru</button>
+      </div>
+
+    
+    </section>
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Tentang di footer -->
+                <div class="footer-about">
+                    <img src="AvatarDinar.png" alt="Dinar Putra Mubarak">
+                    <h3>Dinar Putra Mubarok</h3>
+                    <p>Web Developer profesional dengan fokus pada pengalaman pengguna...</p>
+                </div>
+                <!-- Link navigasi footer -->
+                <div class="footer-links">
+                    <h4>Tautan Cepat</h4>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#projects">Proyek</a></li>
+                        <li><a href="#achievements">Prestasi</a></li>
+                        <li><a href="#guestbook">Buku Tamu</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Copyright -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 Dinar Putra Mubarok. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Load JavaScript di akhir body untuk performa -->
+    <script src="script.js"></script>
+</body>
+</html>
