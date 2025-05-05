@@ -24,14 +24,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         let filteredGuests = guests;
         if (filter) {
-            filteredGuests = [];
-            for (let i = 0; i < guests.length; i++) {
-                const guest = guests[i];
-                if (guest.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1 || 
-                    guest.message.toLowerCase().indexOf(filter.toLowerCase()) !== -1) {
-                    filteredGuests.push(guest);
-                }
-            }
+            filteredGuests = guests.filter(guest => 
+                guest.name.toLowerCase().includes(filter.toLowerCase()) || 
+                guest.message.toLowerCase().includes(filter.toLowerCase())
+            );
         }
         
         if (filteredGuests.length === 0) {
@@ -46,9 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        for (let i = 0; i < filteredGuests.length; i++) {
-            const guest = filteredGuests[i];
-            
+        filteredGuests.forEach((guest, index) => {
             const guestItem = document.createElement('div');
             guestItem.className = `guest-item ${guest.attended ? 'attended' : ''}`;
             
@@ -61,26 +55,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     <span class="guest-date">${formattedDate}</span>
                 </div>
                 <div class="guest-actions">
-                    <button class="toggle-attended" data-index="${getOriginalIndex(guest)}" 
+                    <button class="toggle-attended" data-index="${index}" 
                             title="${guest.attended ? 'Tandai belum berkunjung' : 'Tandai sudah berkunjung'}">
                         ${guest.attended ? '✓' : '✗'}
                     </button>
-                    <button class="delete-guest" data-index="${getOriginalIndex(guest)}" 
+                    <button class="delete-guest" data-index="${index}" 
                             title="Hapus pengunjung">✕</button>
                 </div>
             `;
             
             guestList.appendChild(guestItem);
-        }
-    }
-    
-    function getOriginalIndex(guest) {
-        for (let i = 0; i < guests.length; i++) {
-            if (guests[i].timestamp === guest.timestamp) {
-                return i;
-            }
-        }
-        return -1;
+        });
     }
     
     function formatDate(date) {
@@ -177,58 +162,109 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100);
     }  
 
-    // Kode untuk API Pexels (Gambar)
-    const API_KEY_PEXELS = 'qVUjdmMlBd8yhQcsuQM3b6VNKDNluck2kdkyhV5PcrbhMZGrvIoBgCen'; 
-    const query = 'pemandangan'; 
-    const perPage = 4;
+   // Kode untuk API Pexels (Gambar)
+const API_KEY_PEXELS = 'qVUjdmMlBd8yhQcsuQM3b6VNKDNluck2kdkyhV5PcrbhMZGrvIoBgCen'; 
+const query = 'mountain'; 
+const perPage = 8;
+
+const imageContainer = document.getElementById('image-containerr');
+
+if (imageContainer) {
+    // Tambahkan loading state
+    imageContainer.innerHTML = '<div class="loading-spinner">Memuat gambar...</div>';
 
     fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=${perPage}`, {
-      headers: {
-        Authorization: API_KEY_PEXELS
-      }
-    })
-    .then(response => response.json())
-    .then(data => {
-      const container = document.getElementById('image-containerr');
-      data.photos.forEach(photo => {
-        const img = document.createElement('img');
-        img.src = photo.src.medium;
-        img.alt = photo.photographer;
-        container.appendChild(img);
-      });
-    })
-    .catch(error => {
-      console.error('Gagal ambil gambar dari Pexels:', error);
-    });
-});
-
-const API_KEY = 'FRRCGBROcMubkF+6ZCSKtg==JYZ9jxhgUtSRfEMx';
-
-  function fetchQuote() {
-    fetch('https://api.api-ninjas.com/v1/quotes', {
-      headers: { 'X-Api-Key': API_KEY }
+        headers: {
+            Authorization: API_KEY_PEXELS
+        }
     })
     .then(response => {
-      if (!response.ok) throw new Error(`Status: ${response.status}`);
-      return response.json();
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        return response.json();
     })
     .then(data => {
-      const quote = data[0];
-      document.getElementById('quote-text').textContent = `"${quote.quote}"`;
-      document.getElementById('quote-author').textContent = `— ${quote.author}`;
+        // Hapus loading state
+        imageContainer.innerHTML = '';
+
+        if (!data.photos || data.photos.length === 0) {
+            imageContainer.innerHTML = '<p class="no-images">Tidak ada gambar ditemukan</p>';
+            return;
+        }
+
+        data.photos.forEach(photo => {
+            const card = document.createElement('div');
+            card.className = 'pexels-card';
+
+            const img = document.createElement('img');
+            img.src = photo.src.medium;
+            img.alt = `Foto oleh ${photo.photographer}`;
+            img.loading = 'lazy';
+
+            const overlay = document.createElement('div');
+            overlay.className = 'pexels-overlay';
+
+            const photographer = document.createElement('p');
+            photographer.textContent = `Foto oleh: ${photo.photographer}`;
+            
+            // Membuka link di tab baru dengan cara yang lebih aman
+            card.onclick = (e) => {
+                if (e.target.tagName !== 'A') {  // Hindari bubbling
+                    window.open(photo.url, '_blank', 'noopener,noreferrer');
+                }
+            };
+
+            overlay.appendChild(photographer);
+            card.appendChild(img);
+            card.appendChild(overlay);
+            imageContainer.appendChild(card);
+        });
     })
     .catch(error => {
-      console.error('Gagal ambil kutipan:', error);
-      document.getElementById('quote-text').textContent = 'Gagal memuat kutipan.';
-      document.getElementById('quote-author').textContent = '';
+        console.error('Error:', error);
+        imageContainer.innerHTML = `
+            <div class="error-message">
+                <p>Gagal memuat gambar. Silakan coba lagi nanti.</p>
+                <button onclick="window.location.reload()">Muat Ulang</button>
+            </div>
+        `;
     });
-  }
+}
+    // Kode untuk API Quotes
+    const API_KEY = 'FRRCGBROcMubkF+6ZCSKtg==JYZ9jxhgUtSRfEMx';
 
-  // Load awal
-  fetchQuote();
+    function fetchQuote() {
+        const quoteText = document.getElementById('quote-text');
+        const quoteAuthor = document.getElementById('quote-author');
+        
+        if (!quoteText || !quoteAuthor) return;
 
-  // Tombol klik
-  document.getElementById('refresh-quote').addEventListener('click', fetchQuote);
+        fetch('https://api.api-ninjas.com/v1/quotes', {
+            headers: { 'X-Api-Key': API_KEY }
+        })
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            return response.json();
+        })
+        .then(data => {
+            if (data && data.length > 0) {
+                quoteText.textContent = `"${data[0].quote}"`;
+                quoteAuthor.textContent = `— ${data[0].author}`;
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching quote:', error);
+            quoteText.textContent = 'Gagal memuat kutipan. Silakan coba lagi.';
+            quoteAuthor.textContent = '';
+        });
+    }
 
+    // Load awal
+    displayGuests();
+    fetchQuote();
 
-
+    // Tombol refresh quote
+    const refreshBtn = document.getElementById('refresh-quote');
+    if (refreshBtn) {
+        refreshBtn.addEventListener('click', fetchQuote);
+    }
+});
